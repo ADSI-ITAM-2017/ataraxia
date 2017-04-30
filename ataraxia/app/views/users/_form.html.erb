@@ -3,86 +3,10 @@
   <title></title>
   <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 
-  <style type="text/css">
-    body{
-    padding-top: 120px;
-<<<<<<< HEAD
-=======
-
->>>>>>> 3115ce6650a2e616baa934fe57cf41002b1baa6a
-    background: url(/LogoConLetras.png);
-    
-    background-size: cover;
-    background-repeat: no-repeat;
-  }
-<<<<<<< HEAD
-=======
-
->>>>>>> 3115ce6650a2e616baa934fe57cf41002b1baa6a
-  .jumbotron{
-    opacity: 0.8;
-    width: 25% 25%;
-    font-size: 2em;
-<<<<<<< HEAD
-  }
-=======
-
-  }
-
->>>>>>> 3115ce6650a2e616baa934fe57cf41002b1baa6a
-  #h1T{
-    text-align: center;
-    color:  #0080ff;
-    font-size: 120%;
-  }
-<<<<<<< HEAD
-=======
-
-
-
->>>>>>> 3115ce6650a2e616baa934fe57cf41002b1baa6a
-  </style>
-</head>
-<body>
-  <!-- Jumbotron -->
-<nav class="navbar navbar-inverse navbar-fixed-top">
-    <div class="container">
-      <div class="navbar-header">
-        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navBar" aria-expanded="false">
-              <span class="sr-only">Toggle navigation</span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-           </button>
-        <a href="/home/index" class="navbar-brand"><span class="glyphicon glyphicon-home" aria-hidden="true"></span> Ataraxia</a>
-      </div>
-      <div class="collapse navbar-collapse" id="navBar">
-        <ul class="nav navbar-nav">
-          <li><a href="#"><span class="glyphicon glyphicon-search" aria-hidden="true"></span>Buscar</a></li>
-          <li><a href="#"><span class="glyphicon glyphicon-envelope" aria-hidden="true"></span> Mensajes</a></li>
-        </ul>
-        <ul class="nav navbar-nav navbar-right">
-          <li><a href="/users/new">Sign Up</a></li>
-          <li><a href="#">Sign in</a></li>
-        </ul>
-      </div>
-    </div>
-  </nav>
-
-
-
-
   <!-- Forma -->
 
-<form>
-  <div class="form-group jumbotron container">
-      <h1 id="h1T">Bienvenido, introduce tus datos para crear tu cuenta</h1>
-   <div class="row"> 
-    <div class="col-lg-2"></div>
-    <div class="col-lg-8">
-      <div class="row">
         <%= form_for :user, url: users_create_path do |f| %>
-        <div class="col-lg-6">
+
           <p>
             <%= f.label :name %><br>
             <%= f.text_field :name, required: true %>
@@ -95,8 +19,7 @@
             <%= f.label :email %><br>
             <%= f.text_field :email, required: true, :pattern => '[^@]+@[^@]+\.[a-zA-Z]{2,6}' %>
             </p>
-        </div>
-        <div class="col-lg-6">
+
           <p>
             <%= f.radio_button :gender, "0" , required: true%>
             <%= label_tag(:gender_female, "Female")%>
@@ -111,66 +34,10 @@
             <%= f.label :password %><br>
             <%= password_field(:user, :password, size: 20) %>
           </p>
-        </div>
-       
-      </div>
-
-      <div class="row">
-        <div class="col-lg-4"></div>
-        <div class="col-lg-4">
+ 
           <p>
                 <%= f.submit %>
           </p>
           <% end %>
 
-        </div>
-        <div class="col-lg-4"></div>
 
-               
-      </div>
-
-
-
-
-
-
-</div>
-</form>
-
-</body>
-</html>
-
-
-
-
-
-<!-- 
-<form>
-  <div class="form-group">
-    <label for="exampleInputEmail1">Email address</label>
-    <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Email">
-  </div>
-  <div class="form-group">
-    <label for="exampleInputPassword1">Password</label>
-    <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
-  </div>
-  <div class="form-group">
-    <label for="exampleInputFile">File input</label>
-    <input type="file" id="exampleInputFile">
-    <p class="help-block">Example block-level help text here.</p>
-  </div>
-  <div class="checkbox">
-    <label>
-      <input type="checkbox"> Check me out
-    </label>
-  </div>
-  <button type="submit" class="btn btn-default">Submit</button>
-</form>
-<<<<<<< HEAD
-=======
-
-
-
-
->>>>>>> 3115ce6650a2e616baa934fe57cf41002b1baa6a
- -->

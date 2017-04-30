@@ -14,7 +14,7 @@ class CreateProperties < ActiveRecord::Migration[5.0]
       t.boolean :furnished
       t.boolean :cleaning_service
       t.boolean :female_roomies
-      t.boolean :male_rommies
+      t.boolean :male_roomies
       t.boolean :gym
       t.boolean :smoking_is_allowed
       t.references :user, foreign_key: true
