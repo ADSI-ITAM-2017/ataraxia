@@ -21,5 +21,7 @@ class CreateProperties < ActiveRecord::Migration[5.0]
 
       t.timestamps
     end
+    
+    add_attachment :properties, :image
   end
 end

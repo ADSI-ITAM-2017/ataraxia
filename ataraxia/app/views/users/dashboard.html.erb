@@ -7,4 +7,80 @@
 </h1>
 <hr>
 
+<%= link_to 'Mensajes', conversations_path%>
 <%= link_to 'Cerrar sesión', users_dashboard_logout_path%>
+
+
+
+<h1>Properties currently for rent</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Casa</th>
+      <th>Dirección</th>
+      <th>Lesee</th>
+      <th>Precio/mes</th>
+      <th>Disponible</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @propertylessor.each do |property| %>
+      <tr>
+        <td><%= property.name %></td>
+        <td><%= property.address %></td>
+        <td><%= property.lesee%></td>
+        <td><%= property.price %></td>
+        <td><%= property.available %></td>  
+	<td><%= link_to "More info", properties_information_path(:id => property.id)%></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<h1>Proposals for your properties</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Nombre del cliente</th>
+      <th>Nombre de la casa</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @proposal.each do |proposal| %>
+      <tr>
+        <td><%= proposal.lesee_id %></td>
+        <td><%= proposal.property_id %></td> 
+	<td><%= link_to "Aceptar propuesta", proposals_accept_path(:property_id => proposal.property_id, :lesee_id => proposal.lesee_id, :proposal_id => proposal.id)%></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<h1>Properties you are paying for</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Casa</th>
+      <th>Dirección</th>
+      <th>Precio/mes</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @propertylesee.each do |property| %>
+      <tr>
+        <td><%= property.name %></td>
+        <td><%= property.address %></td>
+        <td><%= property.price %></td>
+	<td><%= link_to "More info", properties_information_path(:id => property.id)%></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+

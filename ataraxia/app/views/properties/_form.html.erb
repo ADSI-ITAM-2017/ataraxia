@@ -69,6 +69,9 @@
         <p>
           <%= f.text_field :available, hidden: true, value: '1' %>
         </p>
+        <p>
+          <%= f.text_field :user_id, hidden: true, value: @user.id %>
+        </p>
 
       <!-- </div>
       <div class="col-lg-3"> -->
@@ -76,11 +79,11 @@
           <%= f.label :Dirección %><br>
           <%= f.text_field :address, required: true %>
         </p>
-
+<!--
         <p>
           <%= f.label :Usuario %><br>
           <%= f.text_field :user_id, required: true %>
-        </p>
+        </p> -->
 
 
       <!-- </div>
@@ -88,12 +91,6 @@
         <p>
           <%= f.label :Distancia %><br>
           <%= f.text_field :distance, required: true %>
-        </p>
-
-
-        <p>
-          <%= f.label :Arrendatario %><br>
-          <%= f.text_field :lesee, required: true %>
         </p>
 
 
@@ -159,6 +156,7 @@
                 <%= f.check_box :smoking_is_allowed %>
                 <%= label_tag(:smoking_is_allowed, "Fumar")%>
               </p>
+            <div class="field"><%= f.label :image%><%= f.file_field :image%></div>
           </div>
 
           </div>

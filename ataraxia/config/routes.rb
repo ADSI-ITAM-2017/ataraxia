@@ -2,7 +2,6 @@ Rails.application.routes.draw do
 
 	#default
 
-
   get '/' => 'home#index'
   get 'home/index'
 
@@ -21,9 +20,13 @@ Rails.application.routes.draw do
 	get 'properties' => 'properties#index'
 	get 'properties/show' => 'properties/show'
 	get 'properties/information' => 'properties#information'
+  
+    post 'proposals/create' => 'proposals#create'
+    get 'proposals/accept' => 'proposals#accept'
 
 
-
-
+  resources :conversations do
+    resources :messages
+  end
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
