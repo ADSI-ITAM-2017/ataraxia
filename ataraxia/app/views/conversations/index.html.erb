@@ -10,12 +10,16 @@
           <% else %>
             <% recipient = User.find(conversation.sender_id) %>
           <% end %>
-          <%= link_to recipient.name, conversation_messages_path(conversation)%>         <br>
+          <%= link_to recipient.name, conversation_messages_path(conversation), target:"box"%>         <br>
         <% end %>
       <% end %>
     </div>
   </div>
 </div>
+
+
+
+<iframe name="box" data-src="http://www.w3schools.com" src="about:blank" width="500" height="200" style="background:#ffffff"></iframe>
 
 <!--
 <div class="ui segment">
