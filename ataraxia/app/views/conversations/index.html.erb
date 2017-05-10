@@ -1,25 +1,79 @@
-<div class="ui segment">
-  <h3>Mailbox</h3>
+<html>
+<head>
+  <title>Mensajes</title>
+  <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 
-  <div class="ui list">
-    <div class="item">
-      <% @conversations.each do |conversation| %>
-        <% if conversation.sender_id == session[:current_user_id]|| conversation.recipient_id == session[:current_user_id] %>
-          <% if conversation.sender_id == session[:current_user_id] %>
-            <% recipient = User.find(conversation.recipient_id) %>
-          <% else %>
-            <% recipient = User.find(conversation.sender_id) %>
-          <% end %>
-          <%= link_to recipient.name, conversation_messages_path(conversation), target:"box"%>         <br>
-        <% end %>
-      <% end %>
+  <style type="text/css">
+    body{
+      padding-top: 50px;
+      background: url(https://res.cloudinary.com/simpleview/image/fetch/f_auto,q_75/http://denver.simpleviewcrm.com/images/listings/original_Skyline-from-City-Park-Credit-VISIT-DENVER.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+
+
+    }
+
+    .thumbnail{
+      opacity: 0.8;
+    }
+
+
+   
+    </style>
+</head>
+<body>
+
+
+
+<%= render 'shared/navbar' %>
+
+
+
+<div class="container">
+  <h1>Mensajes</h1>
+<div class="thumbnail">
+  <div class="row">
+    <div class="col-sm-3">
     </div>
-  </div>
+    <div class="col-sm-3">
+
+      <div class="ui segment">
+         <div class="ui list">
+              <div class="item">
+                <h4>Usuarios</h4>
+                <% @conversations.each do |conversation| %>
+                  <% if conversation.sender_id == session[:current_user_id]|| conversation.recipient_id == session[:current_user_id] %>
+                    <% if conversation.sender_id == session[:current_user_id] %>
+                      <% recipient = User.find(conversation.recipient_id) %>
+                    <% else %>
+                      <% recipient = User.find(conversation.sender_id) %>
+                    <% end %>
+                    <%= link_to recipient.name, conversation_messages_path(conversation), target:"box"%>         <br>
+                  <% end %>
+                <% end %>
+              </div>
+          </div>
+        </div>
+      
+    </div>
+    
+    <div class="col-sm-3">
+       <iframe name="box" data-src="http://www.w3schools.com" src="about:blank" width="500" height="400"  style="background:#ffffff"></iframe>
+    
+    </div>
+    <div class="col-sm-3">
+      
+    </div>
+     </div>
+
+
+
+     </div>
+  
 </div>
 
-
-
-<iframe name="box" data-src="http://www.w3schools.com" src="about:blank" width="500" height="200" style="background:#ffffff"></iframe>
+</body>
+</html>
 
 <!--
 <div class="ui segment">
