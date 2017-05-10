@@ -1,4 +1,6 @@
+
 <%= form_for :properties, url: properties_show_path do |f| %>
+<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
  <!--<p>
     <%= f.label :name %><br>
@@ -11,10 +13,12 @@
  </p>
   <%= f.select :property_type, options_for_select([["Casa", "c"], ["Departamento", "d"],["Cuarto", "cu"]]) %>
 </p>-->
-  <p>
-
   
-  <%= f.check_box :elevator %>
+<div class="row">  	
+<div class="col-sm-3"></div>
+<div class="col-sm-3">
+<p>
+<%= f.check_box :elevator %>
 <%= label_tag(:elevator, "Elevator") %>
 </p>
 <p>
@@ -33,6 +37,10 @@
 <%= f.check_box :cleaning_service %>
 <%= label_tag(:cleaning_service, "Cleaning Service") %>
 </p>
+
+</div>
+<div class="col-sm-3">
+
 <p>
 <%= f.check_box :female_roomies %>
 <%= label_tag(:female_roomies, "Female rommies") %>
@@ -49,6 +57,25 @@
 <%= f.check_box :smoking_is_allowed %>
 <%= label_tag(:smoking_is_allowed, "Smoking") %>
 </p>
+
+
+</div>
+</div>
+<div class="col-sm-3"></div>
+
+<div class="row">
+<div class="col-sm-3"></div>
+<div class="col-sm-3">
+
+ <p>
+ <%= f.submit("Buscar") %>
+
+    <!--<%= @pro.inspect %> -->
+</p>
+</div>
+<div class="col-sm-6"></div>
+</div>
+
 <!--<p>
 <label for="llegar al ITAM">¿Cómo planeas llegar al ITAM?</label>
 </p>
@@ -67,14 +94,9 @@
 <%= f.check_box :far %>
 
 </p>-->
- <p>
- <%= f.submit %>
 
-    <!--<%= @pro.inspect %> -->
-
-</p>
 <p>
-<h1><%= label_tag(" Propiedades para ti")%></h1>
+<h1><%= label_tag("Propiedades para ti")%></h1>
   
 </p>
 <p>
