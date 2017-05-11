@@ -97,16 +97,39 @@
 
 <p>
 <h1><%= label_tag("Propiedades para ti")%></h1>
-  
+ <% if @property!= nil%>
 </p>
-<p>
-<%= @property.inspect %>
-</p>
-<!--<p>
-<%= label_tag("Nombre de propiedad")%>
+<table>
+  <thead>
+    <tr>
+      <th>Imagen</th>
+      <th>Casa</th>
+      <th>Dirección</th>
+      <th>Descripción</th>
+      <th>Precio/mes</th>
+      <th>Disponible</th>
 
-</p> -->
 
 
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @property.each do |property| %>
+      <tr>
+        <td><%= image_tag property.image.url(:thumb) %></td>
+        <td><%= property.name %></td>
+        <td><%= property.address %></td>
+        <td><%= property.description %></td>
+        <td><%= property.price %></td>
+        <td><%= property.available %></td>
+    
+
+	<td><%= link_to "More info", properties_information_path(:id => property.id)%></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<%end%>
 
   <% end %>
