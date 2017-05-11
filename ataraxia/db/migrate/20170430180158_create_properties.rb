@@ -18,10 +18,11 @@ class CreateProperties < ActiveRecord::Migration[5.0]
       t.boolean :gym
       t.boolean :smoking_is_allowed
       t.references :user, foreign_key: true
+      t.decimal :rating
 
       t.timestamps
     end
-    
+
     add_attachment :properties, :image
   end
 end
