@@ -1,27 +1,62 @@
+<html>
+<head>
+  <title>Dashboard</title>
+   <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+   <style type="text/css">
+    body{
+      padding-top: 50px;
+    }
+
+    th, td{
+
+      padding: 10px;
+    }
+
+table, th, td{
+  border: solid black 1px;
+}
+    
+
+   </style>
+</head>
+<body>
+
+<%= render 'shared/navbar' %>
+
 <h1>Hola <%=@user.name%>,
   <% if @user.gender %>
-  	Bienvenido
+  	bienvenido.
   <%else%>
-    Bienvenida
+    bienvenida.
   <% end %>
 </h1>
 <hr>
 
-<%= link_to 'Mensajes', conversations_path%>
+
 <%= link_to 'Cerrar sesión', users_dashboard_logout_path%>
 
 
+<div class="container">
+  <div class="row">
+    <div class="col-sm-6">
+      <h1>Propiedades disponibles para rentar</h1>
 
-<h1>Properties currently for rent</h1>
-
-<table>
+<table id="tabl">
   <thead>
     <tr>
-      <th>Casa</th>
-      <th>Dirección</th>
-      <th>Lesee</th>
-      <th>Precio/mes</th>
-      <th>Disponible</th>
+     
+          <th>Casa</th>
+       
+          <th>Dirección</th>
+       
+          <th>Lesee</th>
+       
+          <th>Precio/mes</th>
+        
+          <th>Disponible</th>
+          <th></th>
+        
+      
     </tr>
   </thead>
 
@@ -32,14 +67,20 @@
         <td><%= property.address %></td>
         <td><%= property.lesee%></td>
         <td><%= property.price %></td>
-        <td><%= property.available %></td>  
-	<td><%= link_to "More info", properties_information_path(:id => property.id)%></td>
+        <td><%= property.available %></td>
+  <td><%= link_to "More info", properties_information_path(:id => property.id)%></td>
       </tr>
     <% end %>
   </tbody>
 </table>
 
-<h1>Proposals for your properties</h1>
+
+
+    </div>
+
+    <div class="col-sm-6">
+
+<h1>Propuestas para tus propiedades</h1>
 
 <table>
   <thead>
@@ -53,14 +94,25 @@
     <% @proposal.each do |proposal| %>
       <tr>
         <td><%= proposal.lesee_id %></td>
-        <td><%= proposal.property_id %></td> 
-	<td><%= link_to "Aceptar propuesta", proposals_accept_path(:property_id => proposal.property_id, :lesee_id => proposal.lesee_id, :proposal_id => proposal.id)%></td>
+        <td><%= proposal.property_id %></td>
+  <td><%= link_to "Aceptar propuesta", proposals_accept_path(:property_id => proposal.property_id, :lesee_id => proposal.lesee_id, :proposal_id => proposal.id)%></td>
       </tr>
     <% end %>
   </tbody>
 </table>
 
-<h1>Properties you are paying for</h1>
+
+
+    </div>
+
+  </div>
+
+
+</div>
+
+
+<div class="container">
+<h1>Propiedades por las que est&aacute;s pagando</h1>
 
 <table>
   <thead>
@@ -68,6 +120,7 @@
       <th>Casa</th>
       <th>Dirección</th>
       <th>Precio/mes</th>
+      <th></th>
     </tr>
   </thead>
 
@@ -84,3 +137,5 @@
 </table>
 
 
+</body>
+</html>

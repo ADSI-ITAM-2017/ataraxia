@@ -29,35 +29,12 @@
   </style>
 </head>
 <body>
-  <!-- NavBar -->
-<nav class="navbar navbar-inverse navbar-fixed-top">
-    <div class="container">
-      <div class="navbar-header">
-        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navBar" aria-expanded="false">
-              <span class="sr-only">Toggle navigation</span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-           </button>
-        <a href="/home/index" class="navbar-brand"><span class="glyphicon glyphicon-home" aria-hidden="true"></span> Ataraxia</a>
-      </div>
-      <div class="collapse navbar-collapse" id="navBar">
-        <ul class="nav navbar-nav">
-          <li><a href="#"><span class="glyphicon glyphicon-search" aria-hidden="true"></span>Buscar</a></li>
-          <li><a href="#"><span class="glyphicon glyphicon-envelope" aria-hidden="true"></span> Mensajes</a></li>
-        </ul>
-        <ul class="nav navbar-nav navbar-right">
-          <li><a href="/users/new">Sign Up</a></li>
-          <li><a href="#">Sign in</a></li>
-        </ul>
-      </div>
-    </div>
-  </nav>
+  
+<%= render 'shared/navbar' %>
 
 
 <!-- LOGIN FORM -->
 
-<h1>Log in</h1>
 
 <%= form_for :user, url: users_login_path do |f|%>
   <div class="form-group jumbotron container">
@@ -85,7 +62,7 @@
         <div class="col-lg-4">
 
  <p>
-          <%= f.submit %>
+          <%= f.submit("Iniciar sesión") %>
           </p>
           <% end %>
 

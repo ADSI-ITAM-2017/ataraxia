@@ -17,6 +17,9 @@ class UsersController < ApplicationController
   end
 
   def login
+    unless session[:current_user_id] == nil
+      redirect_to users_dashboard_path
+    end
   end
 
   def loginValidate

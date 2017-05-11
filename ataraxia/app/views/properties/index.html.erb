@@ -9,6 +9,9 @@
       <th>description</th>
       <th>Precio/mes</th>
       <th>Disponible</th>
+
+
+
     </tr>
   </thead>
 
@@ -21,6 +24,8 @@
         <td><%= property.description %></td>
         <td><%= property.price %></td>
         <td><%= property.available %></td>
+    
+
 	<td><%= link_to "More info", properties_information_path(:id => property.id)%></td>
       </tr>
     <% end %>
