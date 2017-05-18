@@ -13,8 +13,8 @@
  </p>
   <%= f.select :property_type, options_for_select([["Casa", "c"], ["Departamento", "d"],["Cuarto", "cu"]]) %>
 </p>-->
-  
-<div class="row">  	
+
+<div class="row">
 <div class="col-sm-3"></div>
 <div class="col-sm-3">
 <p>
@@ -112,8 +112,8 @@
 
 
  <% if @property!= nil%>
- <h1><%= label_tag("Propiedades para ti")%></h1>
- 
+ <h2><%= label_tag("Propiedades para ti")%></h2>
+
  <% if @property.inspect != "#<ActiveRecord::Relation []>"%>
 </p>
 <table>
@@ -125,16 +125,16 @@
       <th>Descripción</th>
       <th>Precio/mes</th>
       <th>Disponible</th>
-   
+
 
     </tr>
-    
+
   </thead>
   <%end%>
    <font color="red">
-  <%= @pro %> 
-  </font> 
- 
+  <%= @pro %>
+  </font>
+
  <% if @property!= nil%>
   <tbody>
     <% @property.each do |property| %>
@@ -161,23 +161,23 @@
 
 
  <% if @prop!= nil%>
- <table>
- <!--<h1><%= label_tag("Propiedades de acuerdo a cómo planeas llegar a la universidad")%></h1>
+ <h2><%= label_tag("Propiedades de acuerdo a medio de transporte")%></h2>
+ <% if @property.inspect != "#<ActiveRecord::Relation []>"%>
 </p>
 <table>
   <thead>
     <tr>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-   
+      <th>Imagen</th>
+      <th>Casa</th>
+      <th>Dirección</th>
+      <th>Descripción</th>
+      <th>Precio/mes</th>
+      <th>Disponible</th>
+
 
     </tr>
-    
-  </thead>  -->
+
+  </thead>
 
   <tbody>
     <% @prop.each do |property| %>
@@ -187,16 +187,22 @@
         <td><%= property.address %></td>
         <td><%= property.description %></td>
         <td><%= property.price %></td>
-        <td><%= property.available %></td> 
-    
+        <td><%= property.available %></td>
+
 
   <td><%= link_to "More info", properties_information_path(:id => property.id)%></td>
       </tr>
     <% end %>
   </tbody>
 </table>
+<%else%>
+<font color="red">
+Lo sentimos  :(, no está registrada una propiedad con esas características
+</font>
+<%end%>
+
 
 <%end%>
- 
+
 
   <%end%>

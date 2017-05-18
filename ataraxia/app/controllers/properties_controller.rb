@@ -108,7 +108,7 @@ end
 @property = Property.where(elevator: elevator, ground_floor: ground_floor, pets_allowed: pets_allowed, furnished: furnished, cleaning_service: cleaning_service, female_roomies: female_roomies, male_roomies: male_roomies, gym: gym, smoking_is_allowed: smoking_is_allowed)
 
 if(@property.inspect == "#<ActiveRecord::Relation []>" || @prop.inspect == "#<ActiveRecord::Relation []>")
-  @pro = "Lo siento  :(, no está registrada una propiedad con esas características"
+  @pro = "Lo sentimos  :(, no está registrada una propiedad con esas características"
 else
   @pro = ""
 end
