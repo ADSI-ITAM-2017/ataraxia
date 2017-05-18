@@ -69,8 +69,6 @@
 
  <p>
  <%= f.submit("Buscar") %>
-
-    <!--<%= @pro.inspect %> -->
 </p>
 </div>
 <div class="col-sm-6"></div>
@@ -97,6 +95,7 @@
 
 <p>
 <h1><%= label_tag("Propiedades para ti")%></h1>
+
  <% if @property!= nil%>
 </p>
 <table>
@@ -108,11 +107,14 @@
       <th>Descripción</th>
       <th>Precio/mes</th>
       <th>Disponible</th>
-
-
+   
 
     </tr>
+    
   </thead>
+   <font color="red">
+  <%= @pro %> 
+  </font> 
 
   <tbody>
     <% @property.each do |property| %>
