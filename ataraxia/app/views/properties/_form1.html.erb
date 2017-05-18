@@ -108,11 +108,12 @@
 </p>
 
 
-<p>
+
 
 
  <% if @property!= nil%>
  <h1><%= label_tag("Propiedades para ti")%></h1>
+ 
  <% if @property.inspect != "#<ActiveRecord::Relation []>"%>
 </p>
 <table>
@@ -134,7 +135,7 @@
   <%= @pro %> 
   </font> 
  
-
+ <% if @property!= nil%>
   <tbody>
     <% @property.each do |property| %>
       <tr>
@@ -144,35 +145,39 @@
         <td><%= property.description %></td>
         <td><%= property.price %></td>
         <td><%= property.available %></td>
-    
 
-	<td><%= link_to "More info", properties_information_path(:id => property.id)%></td>
+
+
+         <td><%= link_to "More info", properties_information_path(:id => property.id)%></td>
       </tr>
     <% end %>
-  </tbody>
+     </tbody>
+
+<%end%>
 </table>
 <%end%>
 
 
 
+
  <% if @prop!= nil%>
- <h1><%= label_tag("Propiedades de acuerdo a cómo planeas llegar a la universidad")%></h1>
+ <table>
+ <!--<h1><%= label_tag("Propiedades de acuerdo a cómo planeas llegar a la universidad")%></h1>
 </p>
 <table>
   <thead>
     <tr>
-      <th>Imagen</th>
-      <th>Casa</th>
-      <th>Dirección</th>
-      <th>Descripción</th>
-      <th>Precio/mes</th>
-      <th>Disponible</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
    
 
     </tr>
     
-  </thead>
-  
+  </thead>  -->
 
   <tbody>
     <% @prop.each do |property| %>
@@ -182,7 +187,7 @@
         <td><%= property.address %></td>
         <td><%= property.description %></td>
         <td><%= property.price %></td>
-        <td><%= property.available %></td>
+        <td><%= property.available %></td> 
     
 
   <td><%= link_to "More info", properties_information_path(:id => property.id)%></td>
@@ -190,7 +195,8 @@
     <% end %>
   </tbody>
 </table>
+
 <%end%>
+ 
 
-
-  <% end %>
+  <%end%>

@@ -83,15 +83,23 @@ if (params[:properties][:smoking_is_allowed])=="1"
 end
 
 if(params[:properties][:very_close])=="1"
+
+#@property = Property.where(elevator: elevator, ground_floor: ground_floor, pets_allowed: pets_allowed, furnished: furnished, cleaning_service: cleaning_service, female_roomies: female_roomies, male_roomies: male_roomies, gym: gym, smoking_is_allowed: smoking_is_allowed, distance: 50..300)
+
  @prop =Property.where(distance: 50..300)
 end
 
 if(params[:properties][:near])=="1"
- @prop =Property.where(distance: 301..2000)
+ # @property = Property.where(elevator: elevator, ground_floor: ground_floor, pets_allowed: pets_allowed, furnished: furnished, cleaning_service: cleaning_service, female_roomies: female_roomies, male_roomies: male_roomies, gym: gym, smoking_is_allowed: smoking_is_allowed, distance: 301..2000)
+
+@prop =Property.where(distance: 301..2000)
+
 end
 
 if(params[:properties][:far])=="1"
- @prop =Property.where(distance: 2000..25000)
+#  @property = Property.where(elevator: elevator, ground_floor: ground_floor, pets_allowed: pets_allowed, furnished: furnished, cleaning_service: cleaning_service, female_roomies: female_roomies, male_roomies: male_roomies, gym: gym, smoking_is_allowed: smoking_is_allowed, distance: 2001..20000)
+
+ @prop =Property.where(distance: 2001..25000)
 end
 
 
@@ -99,16 +107,17 @@ end
 
 @property = Property.where(elevator: elevator, ground_floor: ground_floor, pets_allowed: pets_allowed, furnished: furnished, cleaning_service: cleaning_service, female_roomies: female_roomies, male_roomies: male_roomies, gym: gym, smoking_is_allowed: smoking_is_allowed)
 
-if(@property.inspect == "#<ActiveRecord::Relation []>")
+if(@property.inspect == "#<ActiveRecord::Relation []>" || @prop.inspect == "#<ActiveRecord::Relation []>")
   @pro = "Lo siento  :(, no está registrada una propiedad con esas características"
-#else
- # @pro=""
+else
+  @pro = ""
 end
+ # @pro = ""
 
-end #unless
+ #unless
   #@property=Property.where(elevator: params[:properties][:elevator])
 
-  end  #def
+   #def
 
   
 
@@ -120,5 +129,7 @@ end #unless
       @user = User.find(session[:current_user_id]) #Conseguir el user.
     end
   	  
-  end
+      end
+ end
+end
 end
