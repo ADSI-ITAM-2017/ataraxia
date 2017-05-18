@@ -18,13 +18,22 @@
 				<ul class="nav navbar-nav navbar-right">
 
 				
-					<li><a href="/users/new">Sign Up</a></li>
-					<!-- <li><%= link_to 'Cerrar sesión', users_dashboard_logout_path%></li> -->
-					<li><a href="/users/login">Sign in</a></li>
-		
+					
+					
+							
+
+				 <% if session[:current_user_id] %>
+					 <li><a href="/users/dashboard">Perfil</a></li>
+				 	 <li><%= link_to 'Cerrar sesión', users_dashboard_logout_path%></li> 
+				 <% end %>
+
+				  <% if !session[:current_user_id] %>
+				 	<li><a href="/users/new">Crear Cuenta</a></li>
+				 	<li><a href="/users/login">Ingresar</a></li>
+				 <% end %>
 
 
-      
+      					
     
     
 
