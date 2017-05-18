@@ -1,35 +1,109 @@
-<h1>Properties#index</h1>
+<html>
+<head>
+  <title>Propiedades</title>
 
-<table>
-  <thead>
-    <tr>
-      <th>Imagen</th>
-      <th>Casa</th>
-      <th>Dirección</th>
-      <th>Descripción</th>
-      <th>Precio/mes</th>
-      <th>Disponible</th>
+    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <style type="text/css">
+      body{
+      padding-top: 120px;
+
+      background: url(http://www.turibus.com.mx/up/es/Home/HImg_00000007.jpg);
+     
+
+      background-size: cover;
+      background-repeat: no-repeat;
+      opacity: 0.8;
+      }
+
+    .col-sm-6{
+    text-align: center;
+      }
+
+.col-sm-8{
+    text-align: center;
+      }
+
+        th, tr, td{
+
+      padding: 10px;
+      padding-right: 10px;
+    }
+
+    .thumbnail{
+      padding-bottom: 100px;
 
 
+    }
 
-    </tr>
-  </thead>
+    table, th, tr, td{
+      border: solid black 1px;
+    }
+    
+    </style>
 
-  <tbody>
-    <% @property.each do |property| %>
+</head>
+<body>
+
+<%= render 'shared/navbar' %>
+<div class="container">
+  <div class="thumbnail">
+    <div class="row">
+      <div class="col-sm-3"></div>
+      <div class="col-sm-6">
+        <h1>Propiedades</h1>
+<h5>Si quieres subir una propiedad da click <%= link_to 'aquí', properties_new_path %></h5>
+      </div>
+      <div class="col-sm-3"></div>
+
+    </div>
+
+    <div class="row">
+      <div class="col-sm-2"></div>
+      <div class="col-sm-8">
+      <div class="row">
+        <div class="col-sm-1"></div>
+        <div class="col-sm-8">
+  
+
+  <table>
+    <thead>
       <tr>
-        <td><%= image_tag property.image.url(:thumb) %></td>
-        <td><%= property.name %></td>
-        <td><%= property.address %></td>
-        <td><%= property.description %></td>
-        <td><%= property.price %></td>
-        <td><%= property.available %></td>
-
-
-	<td><%= link_to "More info", properties_information_path(:id => property.id)%></td>
+        <th>Imagen</th>
+        <th>Casa</th>
+        <th>Dirección</th>
+        <th>Descripción</th>
+        <th>Precio/mes</th>
+        <th>Disponible</th>
+        <th></th>
       </tr>
-    <% end %>
-  </tbody>
-</table>
+    </thead>
 
---<%= link_to 'Nueva', properties_new_path %>
+    <tbody>
+      <% @property.each do |property| %>
+        <tr>
+          <td><%= image_tag property.image.url(:thumb) %></td>
+          <td><%= property.name %></td>
+          <td><%= property.address %></td>
+          <td><%= property.description %></td>
+          <td><%= property.price %></td>
+          <td><%= property.available %></td>
+
+
+  	<td><%= link_to "More info", properties_information_path(:id => property.id)%></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+  </div>
+        <div class="col-sm-3"></div>
+      </div>
+  </div>
+  <div class="col-sm-2"></div>
+</div>
+
+  
+  </div>
+</div>
+
+</body>
+</html>
