@@ -14,12 +14,12 @@ class PropertiesController < ApplicationController
   end
 
   def create
-	
+
 	@property=Property.new( property_params)
 	@property.save
 	redirect_to users_dashboard_path
   end
-  
+
   def property_params
     params[:properties].permit(:name,:address,:description,:price,:available,:lesee,:distance,:elevator,:ground_floor,:pets_allowed,:furnished,:cleaning_service,:female_roomies,:male_roomies,:gym,:smoking_is_allowed,:user_id,:image)
   end
@@ -55,7 +55,7 @@ if (params[:properties][:ground_floor])=="1"
 end
 
 if (params[:properties][:pets_allowed])=="1"
-  pets_allowed = true 
+  pets_allowed = true
 end
 
 if (params[:properties][:furnished])=="1"
@@ -86,24 +86,24 @@ if(params[:properties][:very_close])=="1"
 
 #@property = Property.where(elevator: elevator, ground_floor: ground_floor, pets_allowed: pets_allowed, furnished: furnished, cleaning_service: cleaning_service, female_roomies: female_roomies, male_roomies: male_roomies, gym: gym, smoking_is_allowed: smoking_is_allowed, distance: 50..300)
 
- @prop =Property.where(distance: 50..300)
+ @prop =Property.where(distance: 0..1000)
 end
 
 if(params[:properties][:near])=="1"
  # @property = Property.where(elevator: elevator, ground_floor: ground_floor, pets_allowed: pets_allowed, furnished: furnished, cleaning_service: cleaning_service, female_roomies: female_roomies, male_roomies: male_roomies, gym: gym, smoking_is_allowed: smoking_is_allowed, distance: 301..2000)
 
-@prop =Property.where(distance: 301..2000)
+@prop =Property.where(distance: 1001..3000)
 
 end
 
 if(params[:properties][:far])=="1"
 #  @property = Property.where(elevator: elevator, ground_floor: ground_floor, pets_allowed: pets_allowed, furnished: furnished, cleaning_service: cleaning_service, female_roomies: female_roomies, male_roomies: male_roomies, gym: gym, smoking_is_allowed: smoking_is_allowed, distance: 2001..20000)
 
- @prop =Property.where(distance: 2001..25000)
+ @prop =Property.where(distance: 3001..25000)
 end
 
 
-  
+
 
 @property = Property.where(elevator: elevator, ground_floor: ground_floor, pets_allowed: pets_allowed, furnished: furnished, cleaning_service: cleaning_service, female_roomies: female_roomies, male_roomies: male_roomies, gym: gym, smoking_is_allowed: smoking_is_allowed)
 
@@ -119,7 +119,7 @@ end
 
    #def
 
-  
+
 
   def information
     if session[:current_user_id] == nil
@@ -128,7 +128,7 @@ end
       @property=Property.find(params[:id])
       @user = User.find(session[:current_user_id]) #Conseguir el user.
     end
-  	  
+
       end
  end
 end
