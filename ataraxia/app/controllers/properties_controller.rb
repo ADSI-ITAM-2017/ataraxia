@@ -82,16 +82,27 @@ if (params[:properties][:smoking_is_allowed])=="1"
   smoking_is_allowed = true
 end
 
-#if(params[:very_close])=="1"
- # @pro =Property.where(distance < 200)
-#end
+if(params[:properties][:very_close])=="1"
+ @prop =Property.where(distance: 50..300)
+end
+
+if(params[:properties][:near])=="1"
+ @prop =Property.where(distance: 301..2000)
+end
+
+if(params[:properties][:far])=="1"
+ @prop =Property.where(distance: 2000..25000)
+end
+
+
   
 
 @property = Property.where(elevator: elevator, ground_floor: ground_floor, pets_allowed: pets_allowed, furnished: furnished, cleaning_service: cleaning_service, female_roomies: female_roomies, male_roomies: male_roomies, gym: gym, smoking_is_allowed: smoking_is_allowed)
 
 if(@property.inspect == "#<ActiveRecord::Relation []>")
   @pro = "Lo siento  :(, no está registrada una propiedad con esas características"
-
+#else
+ # @pro=""
 end
 
 end #unless

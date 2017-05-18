@@ -59,6 +59,7 @@
 </p>
 
 
+
 </div>
 </div>
 <div class="col-sm-3"></div>
@@ -67,36 +68,52 @@
 <div class="col-sm-3"></div>
 <div class="col-sm-3">
 
- <p>
- <%= f.submit("Buscar") %>
-</p>
 </div>
 <div class="col-sm-6"></div>
 </div>
 
-<!--<p>
-<label for="llegar al ITAM">¿Cómo planeas llegar al ITAM?</label>
-</p>
 <p>
+<center>
+<label for="llegar al ITAM">¿Cómo planeas llegar al ITAM?</label>
+</center>
+</p>
+
+<center>
 <i class="fa fa-male"></i>
 <%= f.check_box :very_close %>
-</p>
-<p>
+
+<font color="white">
+<%= label_tag("....")%>
+</font>
+
+
 <i class="fa fa-bicycle"></i>
 <%= f.check_box :near %>
-</p>
-<p>
+
+<font color="white">
+<%= label_tag("....")%>
+</font>
+
+
+
 <i class="fa fa-car "></i>
 <label for="or">or</label>
 <i class="fa fa-motorcycle "></i>
 <%= f.check_box :far %>
+</center>
 
-</p>-->
+
+ <p>
+ <%= f.submit("Buscar") %>
+</p>
+
 
 <p>
-<h1><%= label_tag("Propiedades para ti")%></h1>
+
 
  <% if @property!= nil%>
+ <h1><%= label_tag("Propiedades para ti")%></h1>
+ <% if @property.inspect != "#<ActiveRecord::Relation []>"%>
 </p>
 <table>
   <thead>
@@ -112,9 +129,11 @@
     </tr>
     
   </thead>
+  <%end%>
    <font color="red">
   <%= @pro %> 
   </font> 
+ 
 
   <tbody>
     <% @property.each do |property| %>
@@ -133,5 +152,45 @@
   </tbody>
 </table>
 <%end%>
+
+
+
+ <% if @prop!= nil%>
+ <h1><%= label_tag("Propiedades de acuerdo a cómo planeas llegar a la universidad")%></h1>
+</p>
+<table>
+  <thead>
+    <tr>
+      <th>Imagen</th>
+      <th>Casa</th>
+      <th>Dirección</th>
+      <th>Descripción</th>
+      <th>Precio/mes</th>
+      <th>Disponible</th>
+   
+
+    </tr>
+    
+  </thead>
+  
+
+  <tbody>
+    <% @prop.each do |property| %>
+      <tr>
+        <td><%= image_tag property.image.url(:thumb) %></td>
+        <td><%= property.name %></td>
+        <td><%= property.address %></td>
+        <td><%= property.description %></td>
+        <td><%= property.price %></td>
+        <td><%= property.available %></td>
+    
+
+  <td><%= link_to "More info", properties_information_path(:id => property.id)%></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<%end%>
+
 
   <% end %>
