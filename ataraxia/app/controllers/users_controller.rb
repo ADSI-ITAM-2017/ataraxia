@@ -10,7 +10,7 @@ class UsersController < ApplicationController
   def create
 	@user=User.new(params[:user].permit(:name,:gender,:age,:email,:password,:phone))
 	@user.save
-	redirect_to users_path
+	redirect_to users_dashboard_path
   end
 
   def destroy
