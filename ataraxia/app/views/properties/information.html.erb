@@ -1,69 +1,153 @@
+<html>
+<head>
+  <title>Informaci&oacute;n</title>
+  <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+   <style type="text/css">
 
-<h1><%= @property.name%></h1>
+   body{
+     padding-top: 120px;
 
-<% if @property.image.url == "/images/original/missing.png"%>
-No Photos
-<% else %>
+      background: url(/LogoConLetras.png);
 
-<%= link_to image_tag(@property.image.url), @property.image.url%>
-<%end%>
-<br><br>
-Renta mensual: <%= @property.price%>
-<hr>
-Descripción<br><br>
-<%= @property.description%>
-<hr>
-Servicios <br><br>
-<% if @property.elevator %>
-	Elevador<br>
-<% end %>
-<% if @property.ground_floor %>
-	Ground floor<br>
-<% end %>
-<% if @property.pets_allowed %>
-	Pets allowed<br>
-<% end %>
-<% if @property.furnished %>
-	Furnished<br>
-<% end %>
-<% if @property.cleaning_service %>
-	Cleaning service<br>
-<% end %>
-<% if @property.female_roomies %>
-	Female roomies<br>
-<% end %>
-<% if @property.male_roomies %>
-	Male roomies<br>
-<% end %>
-<% if @property.gym %>
-	Gym<br>
-<% end %>
-<% if @property.smoking_is_allowed %>
-	Smoking allowed<br>
-<% end %>
+      background-size: cover;
+      background-repeat: no-repeat;
 
-<%= link_to 'Message me!', conversations_path(sender_id: @user.id, recipient_id: @property.user_id), method: 'post'%>
+    }
 
-<% if @property.available %>
-	
-    <%= form_for :proposals, url: proposals_create_path do |f| %>
-              <p>
-              <%= f.text_field :property_id, hidden: true, value: @property.id %>
-            </p>
-            <p>
-              <%= f.text_field :lesee_id, hidden: true, value: @user.id %>
-            </p>
-            <p>
-              <%= f.text_field :user_id, hidden: true, value: @property.user_id %>
-            </p>
-           <p>
-              <%= f.submit %>
-              </p>
-    <% end %>
-<% else %>
-    <h2>La propiedad no se encuentra disponible en este momento.<h2>
-<% end %>
+    
+  .thumbnail{     
+  opacity: 0.8;  
+  overflow: auto;
+  padding-left: 30px;
+    
+}
 
+.thumbnail img{
+    
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+  .col-lg-6{
+    text-align: center;
+    
+  }
+  #fotos{
+    width : 100%;
+    height: 70%;
+    overflow: auto;
+    text-align: center;
+  }
+
+
+   </style>
+</head>
+<body>
+<%= render 'shared/navbar' %>
+<div class="container">
+   <div class="thumbnail">
+
+      <div class="row">
+        <div class="col-lg-3"></div>
+        <div class="col-lg-6">
+          <h1><%= @property.name%></h1>
+        </div>
+        <div class="col-lg-3"></div>
+      </div>
+      
+
+      <div class="row">
+        <div class="col-lg-3"></div>
+        <div class="col-lg-5"></div>
+        <div class="col-lg-4">
+          <div class="thumbnail" id="fotos">
+                 <% if @property.image.url == "/images/original/missing.png"%>
+                   No Photos
+                  <% else %>
+                  <%= link_to image_tag(@property.image.url), @property.image.url%>
+                  <%end%>
+                  <br><br>
+          </div>
+         <h4><%= link_to '¡Contacta al dueño!', conversations_path(sender_id: @user.id, recipient_id: @property.user_id), method: 'post'%></h4> 
+        </div>
+
+
+     
+      <h3>Renta mensual: <%= @property.price%></h3>
+
+      
+      <hr>
+     <h3>Descripción<br><br></h3> 
+     <h5><%= @property.description%></h5>
+      
+      <hr>
+
+
+      <h3>Servicios <br><br></h3>
+      <h5>
+      <% if @property.elevator %>
+      	Elevador<br>
+      <% end %>
+      <% if @property.ground_floor %>
+      	Planta Baja<br>
+      <% end %>
+      <% if @property.pets_allowed %>
+      	Mascotas Permitidas<br>
+      <% end %>
+      <% if @property.furnished %>
+      	Amueblado<br>
+      <% end %>
+      <% if @property.cleaning_service %>
+      	Servicio de Limpieza<br>
+      <% end %>
+      <% if @property.female_roomies %>
+      	Roomies Mujeres<br>
+      <% end %>
+      <% if @property.male_roomies %>
+      	Roomies Hombres <br>
+      <% end %>
+      <% if @property.gym %>
+      	Gimnasio<br>
+      <% end %>
+      <% if @property.smoking_is_allowed %>
+      	Fumar permitido<br>
+      <% end %>
+    </h5>
+      
+      <div class="row">
+        <div class="col-lg-3"></div>
+        <div class="col-lg-6">
+         
+
+          <% if @property.available %>
+          	
+              <%= form_for :proposals, url: proposals_create_path do |f| %>
+                        <p>
+                        <%= f.text_field :property_id, hidden: true, value: @property.id %>
+                      </p>
+                      <p>
+                        <%= f.text_field :lesee_id, hidden: true, value: @user.id %>
+                      </p>
+                      <p>
+                        <%= f.text_field :user_id, hidden: true, value: @property.user_id %>
+                      </p>
+                     <p>
+                        <%= f.submit %>
+                        </p>
+              <% end %>
+          <% else %>
+              <h2>La propiedad no se encuentra disponible en este momento.<h2>
+          <% end %>
+        </div>
+        <div class="col-lg-3"></div>
+      </div>
+  </div>
+</div>
+
+
+</body>
+</html>
 
 
 
